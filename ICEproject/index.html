@@ -1,126 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./asset/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Logix Express — Worldwide delivery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f6f9;--panel:#fff;--ink:#0d2b45;--mute:#4f6a80;--line:#cfdde7;--go:#ff5b1f;--sky:#dcecf5;--ok:#1a8f5a;--cl:#fff;--land:#f8fbfd;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1a2b;--panel:#11263b;--ink:#e8f1f7;--mute:#9db5c7;--line:#233d55;--sky:#12314b;--ok:#4cd08e;--cl:#2b5273;--land:#1f4666}}
+:root[data-theme="dark"]{--bg:#0a1a2b;--panel:#11263b;--ink:#e8f1f7;--mute:#9db5c7;--line:#233d55;--sky:#12314b;--ok:#4cd08e;--cl:#2b5273;--land:#1f4666}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.05;margin:0}
+h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:800;letter-spacing:-.03em}
+h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;letter-spacing:-.02em}
+h3{font-size:1.2rem;font-weight:500}
+:focus-visible{outline:3px solid var(--go);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:68px 0}
+p{max-width:62ch}
+.mute{color:var(--mute)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.logo{font:800 1.2rem "Bricolage Grotesque";text-decoration:none;color:inherit;display:flex;gap:8px;align-items:center;margin-right:auto}
+nav a.l{text-decoration:none;color:inherit;font-weight:500;font-size:.95rem}
+@media(max-width:720px){nav a.l{display:none}}
+.btn{display:inline-block;background:var(--go);color:#fff;border:0;border-radius:10px;padding:12px 20px;font:600 1rem "Instrument Sans";cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.sm{padding:7px 12px;font-size:.85rem}
+.hero{background:var(--sky);padding:56px 0 0;overflow:hidden}
+.hero p{font-size:1.15rem;margin:20px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.sky{display:block;width:100%;height:auto;margin-top:24px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:30px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card .price{font:800 1.4rem "Bricolage Grotesque";margin-top:8px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:26px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;width:100%}
+.row input{flex:1;min-width:180px;width:auto}
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:5px}
+#map,#bmap{width:100%;height:auto;display:block;margin-top:16px;background:var(--sky);border-radius:12px}
+.status{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:16px}
+.pill{background:var(--go);color:#fff;border-radius:99px;padding:4px 14px;font-weight:600;font-size:.9rem;white-space:nowrap}
+.pill.done{background:var(--ok)}
+.steps{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px}
+.steps li{display:flex;gap:12px;align-items:center;color:var(--mute)}
+.steps li i{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);flex:none}
+.steps li.on{color:var(--ink);font-weight:600}
+.steps li.on i{background:var(--ok);border-color:var(--ok)}
+.steps li.now i{background:var(--go);border-color:var(--go);box-shadow:0 0 0 5px rgba(255,91,31,.25)}
+.two{display:grid;gap:32px;grid-template-columns:1fr 1.2fr}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+.form{display:grid;gap:13px}
+.f2{display:grid;gap:13px;grid-template-columns:1fr 1fr}
+@media(max-width:480px){.f2{grid-template-columns:1fr}}
+.est{background:var(--sky);border-radius:12px;padding:14px 16px;font-weight:600}
+.est b{font:800 1.7rem "Bricolage Grotesque"}
+.note{background:var(--sky);border-left:5px solid var(--ok);padding:12px 16px;border-radius:8px;margin-top:12px}
+.warn{border-left-color:var(--go)}
+.pay{display:grid;gap:10px;margin:12px 0}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--line);border-radius:10px;padding:12px;cursor:pointer}
+.opt input{width:auto;margin-top:5px}
+.addr{font-family:ui-monospace,monospace;font-size:.85rem;word-break:break-all;background:var(--bg);padding:8px;border-radius:8px;margin:6px 0}
+footer{background:#0d2b45;color:#e8f1f7;padding:40px 0 48px}
+footer a{color:#e8f1f7}
+.fg{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle;white-space:nowrap}
+.plane{stroke:#fff;stroke-width:1.2;stroke-linejoin:round}
+.pm{border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:12px;display:grid;gap:10px}
+.dash{stroke:var(--mute);stroke-width:2;stroke-dasharray:3 9;fill:none;stroke-linecap:round}
+.done-line{stroke:var(--go);stroke-width:3;fill:none;stroke-linecap:round}
+.cloud{fill:var(--cl);opacity:.7}
+.ink{fill:var(--ink)}.go{fill:var(--go)}
+.drift{animation:drift 60s linear infinite}
+.drift.b{animation-duration:90s;animation-delay:-30s}
+@keyframes drift{from{transform:translateX(-200px)}to{transform:translateX(1100px)}}
+@media(prefers-reduced-motion:reduce){.drift{animation:none}}
+.land{fill:color-mix(in srgb,var(--ink) 16%,var(--sky));stroke:var(--line);stroke-width:.6}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px}
+.login{max-width:420px;margin:0 auto}
+.login .form{margin-top:14px}
+[hidden]{display:none!important}
+</style>
 </head>
 <body>
-    <section class="header_sec">
-        <header>
-            <div class="header_div">
-                <div class="logo">
-                    <img class="img" src="./asset/img/WhatsApp Image 2026-09-09 at 7.37.01 PM.jpeg" alt="">
-                    <p>Institute Of <br>Continued Education</p>
-                </div>
-            <div class="nav_bar">
-                <nav class="nav">
-                    <ul>
-                        <li><a href="">Contacts</a></li>
-                        <li><a href="">Check results</a></li>
-                        <li><a href="">Upload</a></li>
-                        <li><a href="">Login</a></li>
-                        <li><a href="">Sign up</a></li>
-                    </ul>
-                </nav>
-            </div>
-            </div>
-        </header>
-    
-    </section>
+<nav><div class="wrap">
+  <a class="logo" href="#top"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 14l20-9-7 16-3-7z" fill="var(--go)"/></svg>Logix Express</a>
+  <a class="l" href="#services">Services</a><a class="l" href="#track">Track</a><a class="l" href="#book">Ship now</a>
+  <a class="btn" href="#book">Ship now</a>
+</div></nav>
 
-    <section class="hero_section">
-        <div class="hero_sec">
-            <div class="hero_sec_intro">
-                <h1>Welcome to ICE</h1>
-                <h2>Where Learning Meets Excellence</h2>
-                <p>We are committed to providing quality education in a safe, supportive and inspiring environment where every student is encouraged to learn, grow and achieve their potential.</p>
-            
-                <div class="intro_link">
-                    <a href="">Apply for admission</a>
-                    <a href="">Learn more</a>
-                </div>
-            </div>
-        </div>
-    </section>
-<section class="body">
-    <!-- <img class="bg_img" src="./asset/img/WhatsApp Image 2026-09-09 at 7.37.01 PM.jpeg" alt=""> -->
+<main id="site">
+<header class="hero" id="top">
+<div class="wrap">
+  <h1>Anywhere on Earth.<br>Tracked all the way.</h1>
+  <p>Logix Express delivers parcels and freight to 48 countries by air. Prices show in your local currency, and you pay with PayPal or crypto.</p>
+  <div class="cta"><a class="btn" href="#book">Ship now</a><a class="btn alt" href="#track">Track a parcel</a></div>
+</div>
+<svg class="sky" viewBox="0 0 1000 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A Logix Express plane flying between two cities">
+  <g class="drift"><ellipse class="cloud" cx="0" cy="60" rx="70" ry="18"/><ellipse class="cloud" cx="40" cy="50" rx="45" ry="20"/></g>
+  <g class="drift b"><ellipse class="cloud" cx="0" cy="150" rx="90" ry="20"/><ellipse class="cloud" cx="-40" cy="140" rx="50" ry="18"/></g>
+  <path id="heroPath" class="dash" d="M80 220 Q500 -60 920 200"/>
+  <path id="heroDone" class="done-line" d="M80 220"/>
+  <circle class="ink" cx="80" cy="220" r="9"/><circle class="ink" cx="920" cy="200" r="9"/>
+  <text x="80" y="250" font-size="16" font-weight="600" fill="var(--ink)" text-anchor="middle">New York</text>
+  <text x="920" y="238" font-size="16" font-weight="600" fill="var(--ink)" text-anchor="middle">London</text>
+  <g id="heroPlane"><use href="#planeShape"/></g>
+</svg>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <path id="planeShape" class="go plane" d="M18 0L6-2.5-1-15-5-15-2-2.5-12-2.5-15-7-18-7-16 0-18 7-15 7-12 2.5-2 2.5-5 15-1 15 6 2.5z"/>
+</defs></svg>
+</header>
 
-    <div class="info_card_container">
-        <div class="info_card">
-            <h2>Administrative Staff</h2>
-            <p>Meet our administrative staff and learn more about the people responsible for the day-to-day administration and management of the school.</p>
-            <a href="">See more</a>
-        </div>
-        <div class="info_card">
-            <h2>View Results</h2>
-            <p>Check students' academic results and performance records online.</p>
-            <a href="">See more</a>
-        </div>
-        <div class="info_card">
-            <h2>Upload Results</h2>
-            <p>Securely upload and manage students' academic results.</p>
-            <a href="">See more</a>
-        </div>
-        <div class="info_card">
-            <h2>FAQ</h2>
-            <p>Find answers to frequently asked questions about admissions, results, school activities, and other important information.</p>
-            <a href="">See more</a>
-        </div>
-        <div class="info_card">
-            <h2>School Calender</h2>
-            <p>Stay informed about important school dates, academic activities, examinations, holidays, and upcoming events.</p>
-            <a href="">See more</a>
-        </div>
-        <div class="info_card">
-            <h2>School News</h2>
-            <p>Stay up to date with the latest school announcements, events, achievements, and important updates.</p>
-            <a href="">See more</a>
-        </div>
+<section id="services"><div class="wrap">
+  <h2>Three ways to ship</h2>
+  <p class="mute">Pick a speed when you order. Prices come from distance and weight, in the currency of the country you ship from.</p>
+  <div class="grid">
+    <div class="card"><h3>Express air</h3><p class="mute">Next flight out. Documents, medicine and urgent parts. Usually 1 to 4 days worldwide.</p></div>
+        <div class="card"><h3>Standard air</h3><p class="mute">Air freight on scheduled flights. Good balance of speed and price, 6 to 11 days.</p></div>
+        <div class="card"><h3>Economy flight</h3><p class="mute">Cheaper cargo flights for heavier or less urgent loads, 8 to 33 days.</p></div>
+  </div>
+</div></section>
+
+<section id="track" style="background:var(--panel)"><div class="wrap">
+  <h2>Track your parcel</h2>
+  <p class="mute">Enter your tracking number. Try <b>LX-104820</b> (in the air), <b>LX-301770</b> (picked up) or <b>LX-209310</b> (delivered).</p>
+  <div class="box">
+    <div class="row">
+      <input id="code" aria-label="Tracking number" placeholder="e.g. LX-104820" value="LX-104820">
+      <button class="btn" id="go" type="button">Track</button>
     </div>
+    <div id="msg" class="mute" role="status" style="margin-top:10px"></div>
+    <svg id="map" role="img" aria-label="World map showing the parcel route"></svg>
+    <div class="status"><div><h3 id="tRoute">—</h3><div class="mute" id="tEta"></div></div><span class="pill" id="tPill">—</span></div>
+    <ul class="steps" id="steps"></ul>
+  </div>
+</div></section>
 
+<section id="book"><div class="wrap two">
+  <div>
+    <h2>Ship a parcel</h2>
+    <p class="mute">Fill in the details, then choose how to pay. Your tracking number appears as soon as you place the order.</p>
+    <div class="est" style="margin-top:14px">Estimated price<br><b id="est">—</b><div class="mute" id="estUsd" style="font-weight:400;font-size:.9rem"></div><div class="mute" id="estEta" style="font-weight:400;font-size:.9rem"></div></div>
+    <svg id="bmap" style="margin-top:14px" role="img" aria-label="Preview flight on the world map"></svg>
+  </div>
+  <div>
+    <form class="form" id="form" novalidate>
+      <div class="f2">
+        <div><label for="from">Ship from</label><select id="from"></select></div>
+        <div><label for="to">Ship to</label><select id="to"></select></div>
+      </div>
+      <div class="f2">
+        <div><label for="speed">Speed</label><select id="speed"><option value="x">Express air</option><option value="s">Standard air</option><option value="e">Economy flight</option></select></div>
+        <div><label for="kg">Weight (kg)</label><input id="kg" type="number" min="0.1" step="0.1" value="2"></div>
+      </div>
+      <div class="f2">
+        <div><label for="name">Your name</label><input id="name" autocomplete="name"></div>
+        <div><label for="email">Email</label><input id="email" type="email" autocomplete="email"></div>
+      </div>
+      <div><label for="phone">Phone number</label><input id="phone" type="tel" autocomplete="tel"></div>
+      <div><label for="addr">Pickup address</label><textarea id="addr" rows="2"></textarea></div>
+      <div class="f2">
+        <div><label for="rname">Recipient name</label><input id="rname"></div>
+        <div><label for="raddr">Delivery address</label><input id="raddr"></div>
+      </div>
+      <button class="btn" type="submit">Place order</button>
+      <div id="err" class="note warn" hidden></div>
+    </form>
+    <div id="checkout" class="box" hidden></div>
+  </div>
+</div></section>
 
-</section>
+<footer id="contact"><div class="wrap fg">
+  <div><h3>Logix Express</h3><p>Worldwide delivery by air.</p></div>
+  <div><b>WhatsApp</b><br><a href="https://wa.me/17154517587" target="_blank" rel="noopener">+1 (715) 451-7587</a></div>
+  <div><b>Email</b><br><a href="mailto:logixpress46@gmail.com">Email Us</a></div>
+</div></footer>
+</main>
 
-<footer>
-        <div class="footer_name">
-            <img class="img" src="./asset/img/WhatsApp Image 2026-09-09 at 7.37.01 PM.jpeg" alt="">
-            <div class="footer_sch_name">
-                <h3>Institute Of Continued Education</h3>
-                <p>Providing quality education and creating an environment where students can learn, grow, and succeed.</p>
-            </div>
-        </div>
-
-    <div class="footer_links">
-        <div>
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">View Results</a></li>
-                <li><a href="">School news</a></li>
-                <li><a href="">School Calender</a></li>
-            </ul>
-        </div>
-        <div> 
-        <h3>Admissions</h3>
-        <ul>
-            <li><a href="">Admission Information</a></li>
-            <li><a href="">Admission List</a></li>
-            <li><a href="">Admission Requirements</a></li>
-            <li><a href="">Apply for Admission</a></li>
-        </ul>
-        </div>
-        <div>
-        <h3>Contact Us</h3>
-        <ul>
-            <li><a href="">Contact Us</a></li>
-            <li><a href="">FAQ</a></li>
-            <li><a href="">View Results</a></li>
-        </ul>
+<main id="admin" hidden>
+<section><div class="wrap">
+  <a href="#top" class="mute">Back to website</a>
+  <div class="top"><h2>Admin</h2><button class="btn alt sm" id="logout" type="button" hidden>Log out</button></div>
+  <div id="gate" class="box login"></div>
+  <div id="panel" hidden>
+    <div class="box"><h3>Orders</h3><div id="dbnote" class="mute"></div><div class="scroll"><table><thead><tr><th>Code</th><th>Customer</th><th>Route</th><th>Total</th><th>Payment</th><th>Status</th></tr></thead><tbody id="orders"></tbody></table></div></div>
+    <div class="box"><h3>Route prices</h3><p class="mute">Fixed price for a route, in the currency of the country shipped from, for a 2 kg Express air parcel. Standard air is 65% of it and Economy flight 35%. Leave a route out to use automatic pricing.</p><div id="rts"></div><div class="row" style="margin-top:12px"><button class="btn alt sm" id="addRt" type="button">Add route</button><button class="btn sm" id="saveRt" type="button">Save route prices</button></div><div id="rtMsg" class="mute" role="status" style="margin-top:8px"></div></div>
+    <div class="box"><h3>Payment methods</h3><p class="mute">Customers see these at checkout. For PayPal, enter your PayPal.me name. For crypto, enter your wallet address and network.</p>
+      <div id="pms"></div>
+      <div class="row" style="margin-top:14px"><button class="btn alt sm" id="addPP" type="button">Add PayPal</button><button class="btn alt sm" id="addCr" type="button">Add crypto coin</button><button class="btn sm" id="savePM" type="button">Save payment methods</button></div>
+      <div id="pmMsg" class="mute" role="status" style="margin-top:8px"></div>
     </div>
-    </footer>
+  </div>
+</div></section>
+</main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/cjs"></script>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* Countries: name|currency|units per USD (approximate)|capital lat|lon */
+const CO="United States|USD|1|38.9|-77;Canada|CAD|1.37|45.4|-75.7;Mexico|MXN|18.5|19.4|-99.1;Brazil|BRL|5.4|-15.8|-47.9;Argentina|ARS|1000|-34.6|-58.4;Colombia|COP|4100|4.7|-74.1;Chile|CLP|950|-33.4|-70.7;United Kingdom|GBP|0.75|51.5|-0.1;Ireland|EUR|0.92|53.3|-6.3;France|EUR|0.92|48.9|2.35;Germany|EUR|0.92|52.5|13.4;Spain|EUR|0.92|40.4|-3.7;Italy|EUR|0.92|41.9|12.5;Netherlands|EUR|0.92|52.4|4.9;Portugal|EUR|0.92|38.7|-9.1;Sweden|SEK|10.5|59.3|18.1;Norway|NOK|10.7|59.9|10.8;Switzerland|CHF|0.86|46.9|7.4;Poland|PLN|3.9|52.2|21;Turkey|TRY|34|39.9|32.9;Russia|RUB|90|55.8|37.6;Ukraine|UAH|41|50.5|30.5;Egypt|EGP|48|30|31.2;Nigeria|NGN|1550|9.1|7.5;Ghana|GHS|15|5.6|-0.2;Kenya|KES|129|-1.3|36.8;South Africa|ZAR|17.8|-25.7|28.2;Morocco|MAD|9.8|34|-6.8;Ethiopia|ETB|120|9|38.7;Saudi Arabia|SAR|3.75|24.7|46.7;United Arab Emirates|AED|3.67|24.5|54.4;Israel|ILS|3.7|31.8|35.2;India|INR|84|28.6|77.2;Pakistan|PKR|280|33.7|73;Bangladesh|BDT|120|23.8|90.4;China|CNY|7.15|39.9|116.4;Japan|JPY|150|35.7|139.7;South Korea|KRW|1350|37.6|127;Singapore|SGD|1.3|1.35|103.8;Thailand|THB|34|13.8|100.5;Vietnam|VND|25000|21|105.8;Indonesia|IDR|15700|-6.2|106.8;Philippines|PHP|56|14.6|121;Malaysia|MYR|4.4|3.1|101.7;Australia|AUD|1.5|-35.3|149.1;New Zealand|NZD|1.65|-41.3|174.8".split(";").map(s=>{const a=s.split("|");return{n:a[0],cur:a[1],rate:+a[2],lat:+a[3],lon:+a[4]}}).sort((a,b)=>a.n.localeCompare(b.n));
+const cty=n=>CO.find(c=>c.n===n)||CO[0];
+const proj=c=>[(c.lon+180)*2,(90-c.lat)*2];
+const dist=(a,b)=>{const r=x=>x*Math.PI/180,h=Math.sin(r(b.lat-a.lat)/2)**2+Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(r(b.lon-a.lon)/2)**2;return 12742*Math.asin(Math.sqrt(h))};
+const nf=cur=>{try{return new Intl.NumberFormat("en",{style:"currency",currency:cur})}catch{return null}};
+const fmt=(v,cur)=>{const f=nf(cur);return f?f.format(v):cur+" "+v.toFixed(2)};
+const rnd=(v,cur)=>{const f=nf(cur);return +v.toFixed(f?f.resolvedOptions().maximumFractionDigits:2)};
+/* SET YOUR WHATSAPP NUMBER HERE: country code + number, digits only, no + or spaces. Example: 2348012345678 */
+const WHATSAPP_NUMBER="17154517587";
+/* DATABASE: paste your Supabase Project URL and anon public key between the quotes (see supabase-setup.sql for the steps). */
+const SUPABASE_URL="https://anwzujzsysipgmmlsuuh.supabase.co",SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFud3p1anpzeXNpcGdtbWxzdXVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE2MjAyMTQsImV4cCI6MjEwNzE5NjIxNH0.URF43vHANqoJbcp3r31nDmqgk0RakEVNsDow_yKln2A";
+let sb=null;try{if(SUPABASE_URL&&window.supabase)sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY)}catch{}
+function waLink(o,ref,method){const p=(LS.get("lx_priv")||{})[o.code]||{};
+ const t=["New Logix Express order","Tracking: "+o.code,"Route: "+o.from+" to "+o.to,"Service: "+MODE[o.mode],"Weight: "+(o.kg||"?")+" kg","Total: "+fmt(o.total,o.cur),
+  "Sender: "+(p.name||"")+", "+(p.phone||"")+", "+(p.email||""),"Pickup: "+(p.addr||""),"Recipient: "+(p.rname||"")+", "+(p.raddr||""),
+  "Payment: "+(method||"not yet paid")+(ref?" ref "+ref:"")].join("\n");
+ return "https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(t)}
+const MODE={x:"Express air",s:"Standard air",e:"Economy flight"};
+function usd(a,b,mode,kg){const km=dist(a,b),M={x:[650,.05],s:[423,.0325],e:[228,.0175]}[mode];let u=(M[0]+km*M[1])*(1+Math.max(0,kg-2)*.35);if(a.n===b.n)u*=.45;return u}
+function days(a,b,mode){const km=dist(a,b);return mode==="x"?1+Math.ceil(km/9000):mode==="s"?6+Math.ceil(km/5000):7+Math.ceil(km/1500)}
+let ROUTES=[];
+function quote(A,B,m,kg){const r=ROUTES.find(r=>r.from===A.n&&r.to===B.n);
+ if(r){const l=r.price*{x:1,s:.65,e:.35}[m]*(1+Math.max(0,kg-2)*.35);return{local:rnd(l,A.cur),usd:l/A.rate}}
+ const u=usd(A,B,m,kg);return{local:rnd(u*A.rate,A.cur),usd:u}}
+
+/* Data layer: shared db when available, otherwise this browser only */
+let db=null,usr=null;
+const tmo=(p,ms=4000)=>Promise.race([Promise.resolve(p),new Promise((_,j)=>setTimeout(()=>j(new Error("timeout")),ms))]);
+const LS={get:k=>{try{return JSON.parse(localStorage.getItem(k)||"null")}catch{return null}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
+const DEMO={
+ "LX-104820":{code:"LX-104820",from:"United Kingdom",to:"United States",mode:"x",step:3,cur:"GBP",total:700,created:Date.now()},
+ "LX-301770":{code:"LX-301770",from:"China",to:"Nigeria",mode:"e",step:2,cur:"CNY",total:412,created:Date.now()},
+ "LX-209310":{code:"LX-209310",from:"Nigeria",to:"United States",mode:"s",step:5,cur:"NGN",total:98500,created:Date.now()}};
+async function getOrder(code){
+ code=code.trim().toUpperCase();if(DEMO[code])return DEMO[code];
+ if(sb){try{const r=await sb.from("orders").select("data").eq("code",code).maybeSingle();if(r.data)return r.data.data}catch{}}
+ if(db){try{const s=await tmo(db.doc("orders/"+code).get());if(s.exists)return s.data()}catch{}}
+ return (LS.get("lx_orders")||{})[code]||null}
+async function putOrder(o,priv){
+ const all=LS.get("lx_orders")||{};all[o.code]=o;LS.set("lx_orders",all);
+ if(priv){const p=LS.get("lx_priv")||{};p[o.code]=priv;LS.set("lx_priv",p)}
+ if(sb){try{const r1=await tmo(sb.from("orders").insert({code:o.code,data:o}));if(r1.error)throw r1.error;if(priv){const r2=await sb.from("private_orders").insert({code:o.code,data:priv});if(r2.error)throw r2.error}return true}catch{return false}}
+ if(db){try{await tmo(db.doc("orders/"+o.code).set(o));if(priv)await tmo(db.doc("private/"+o.code).set(priv));return true}catch{return false}}
+ return false}
+const DEFAULT_PM=[{id:"pp",type:"paypal",label:"PayPal",handle:""},{id:"usdt",type:"crypto",label:"USDT",network:"TRC20",address:"",rate:1}];
+async function getPM(){
+ if(sb){try{const r=await tmo(sb.from("settings").select("data").eq("key","payments").maybeSingle());if(r.data&&r.data.data.methods)return r.data.data.methods}catch{}}
+ if(db){try{const s=await tmo(db.doc("settings/payments").get());if(s.exists&&s.data().methods)return s.data().methods}catch{}}
+ return LS.get("lx_pm")||DEFAULT_PM}
+
+/* World map (simplified continents, longitude/latitude) */
+const POLY="-168,65 -165,69 -156,71 -141,70 -125,70 -110,68 -95,68 -90,64 -94,59 -85,55 -80,52 -79,58 -77,62 -70,61 -65,60 -62,57 -56,53 -60,50 -66,49 -65,45 -70,43 -70,41.5 -74,40.5 -76,37 -76,35 -81,31 -80,26 -81,25 -83,29 -85,30 -89,30 -94,29.5 -97,27 -97.5,22 -95,18.5 -91,19 -90,21 -87,21 -88,16 -84,15.5 -83,11 -80,9 -77.5,8.5 -79,7 -80,8 -84,9.5 -87,13 -92,14.5 -96,15.7 -105,19.5 -109,25 -113,31 -117,32.5 -120,34.5 -122,37 -124,40 -124,46 -123,48.5 -127,51 -130,55 -135,58 -140,60 -146,61 -152,59 -158,57 -163,55 -158,58.5 -162,60 -165,62 -166,64|-77.5,8.5 -75,11 -72,12 -68,10.7 -62,10.7 -60,8.5 -55,6 -51,4 -50,0 -45,-2.5 -40,-3 -35,-5.5 -35,-9 -39,-14 -39,-18 -41,-22 -45,-23.5 -48.5,-26 -49,-29 -53,-34 -57,-35 -57.5,-38 -62,-39 -65,-41 -64,-45 -67,-46.5 -66,-48 -69,-51 -68.5,-53 -72,-54 -74,-50 -75,-46 -73.5,-40 -73.5,-37 -71.5,-30 -70.5,-18 -76,-14 -81,-6 -80,-2 -80,1 -78,2.5 -77.5,6|-73,78 -60,82 -30,83 -20,80 -18,76 -22,70 -32,68 -42,60 -48,61 -52,66 -55,70 -60,76|-9,43 -9,37 -5.5,36 -2,36.8 0,38.5 3,42 6,43 9,44.3 12.3,42 16,38 18.5,40 16,41.5 13.5,43.7 12.3,45.3 13.7,45.6 15,44 19,42 19.5,40 21,38 23,36.5 24,38 23,40 26,40.7 26.5,38 27,36.7 30,36.3 32.5,36.1 36,36.7 35.8,34.5 35,32 35,29.5 34.5,28 36.5,25 39,21 41,17 43,13 45,12.8 49,14 52,16 55,17 58,20.5 59.8,22.5 56.5,26.2 54,24.3 51.5,24.5 51.2,26 50,26.8 48.5,29.5 50,30 51.5,27.8 54,26.5 56.5,27.2 57.5,25.7 61.5,25.2 66.5,25.4 68,23.5 70,21 72.8,21 73,17 74.5,12.5 76.2,9.5 77.5,8 79.5,10 80,15.5 82.5,17.2 85,19.5 87,21.5 89,22 91,22.5 92.5,20 94,16.5 95,15.7 97.5,16.5 98,13 98.5,9 99.5,6.5 100.5,5 101.5,2.8 103.5,1.4 104.3,3 103,5.5 101,6.8 100.2,9 99.2,10.5 100.5,13 102.5,12 104,10.5 105,9 106.5,10 109,12 108.8,14.5 107,17 106,19 106.5,21 108,21.5 110,20.5 111,21.5 114,22.3 117,23.5 119.5,25.5 121.5,28.5 122,30.5 121,32 119,34.5 121,37 122.5,37.2 120.5,37.8 118.5,37.2 117.5,39 121,40.7 124,39.8 126,37.5 126.5,34.5 129,35.2 129.5,37 128,39 130,42.5 132,43 135,43.5 138,46 140.5,50 141,53 137,54 135,54.5 140,56 143,59 150,59.5 155,59 157,61.5 163,62 160,58 156,51.5 158,53 163,57.5 170,60 178,62.5 180,65 180,69 170,70 160,69.5 150,71 140,72.5 130,71 125,73.5 113,73.7 105,77.5 100,77 95,76 87,75 80,72.5 73,72.5 68,69 60,69.5 55,68 45,68 40,66.5 33,69.2 30,70 25,71 18,70 14,68 10,64.5 5.5,62 5,59.5 8,58 10.5,59.5 11.5,58 12.8,55.6 10.5,54.5 8.5,54 7,53.5 5,53 4,52 3.5,51.3 1.5,50.9 -1.5,49.7 -4.5,48.5 -1.5,46 -1.5,43.5|-5.5,35.8 -2,35.2 3,36.8 10,37.2 11,33.5 15,32.3 20,30.8 20,32.5 24,32 29,31 32.5,31.3 32.5,29.5 33,28 35,24 37.2,20 39,15.5 43,12 51,12 51,10.5 48,5 44,1.5 41,-2 39.5,-5 39,-8 40.5,-11 40.5,-15 35,-20 35.5,-24 32.8,-26 32,-29 28,-33 25,-34 20,-34.8 18.5,-34 17,-29 15,-26 14,-22 12,-17 13.5,-12 12,-6 9,-1 9.5,3.5 8,4.5 4,6.3 -1,5 -4,5.2 -8,4.5 -13,8 -16.5,12.5 -17.5,14.7 -16,19 -16.5,22 -13,27.5 -10,29 -9.5,32 -6.5,34|114,-22 114,-26 115,-34 118,-35 123,-34 129,-31.5 134,-32.5 138,-35 140,-38 144,-38.5 147,-38 150,-37 153,-31 153,-26 150,-22 146,-19 145.5,-15 143,-11 141.5,-13 141,-17 136,-15 137,-12 132,-11.5 130,-13 126,-14 122,-17.5 117,-20.5|-5,50 1.5,51 1.7,53 -0.5,55 -2,57.5 -3,58.6 -6,58 -5,55 -3,54.5 -4.5,53 -5,51.7|-10,52 -6,52 -6,55 -8,55 -10,54|-24,65 -22,64 -18,63.5 -14,64.5 -14.5,66 -22,66.4|130.5,31 132,33.5 135,34 140,35 141,38 142,40 140.5,41 139.5,38 136.5,36.5 133,35.5 131,34|140,42 141.5,45.4 145,43.3 143,42|95,5.5 98,4 104,-1 106,-3 106,-5.8 102,-4 98,0|109,1.5 112,3 117,7 119,5 118,1 116,-3.5 111,-3 109,-1|105.5,-6.5 109,-7 114,-7.8 114.5,-8.5 106,-7.5|131,-1 135,-3.5 138,-8 141,-9 144,-7.5 148,-10 150.5,-10.5 147,-6 143,-3 138,-1.5 134,-0.8|44,-25 47,-25 50,-15.5 49.5,-12 47,-15 44,-17 43.5,-22|172.7,-34.5 174.5,-37 178.5,-37.7 175,-41.5 174,-39.5|172.5,-40.5 174,-41.5 171,-44.5 169,-46.5 166.5,-46 170.5,-43|120,18.5 122,18.3 122,14 124,13 121,13.5 120,16|-85,22 -80,23 -74,20 -77.5,19.8 -81,22.5";
+const LAND=POLY.split("|").map(p=>"M"+p.split(" ").map(q=>{const[x,y]=q.split(",");return ((+x+180)*2).toFixed(1)+" "+((90-+y)*2).toFixed(1)}).join("L")+"Z").join("");
+let GR="";for(let x=0;x<=720;x+=60)GR+=`<line x1="${x}" y1="10" x2="${x}" y2="300"/>`;for(let y=10;y<=300;y+=60)GR+=`<line x1="0" y1="${y}" x2="720" y2="${y}"/>`;
+function arc(a,b){const dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy),lift=Math.min(80,l*.22);return `M${a[0]} ${a[1]} Q${(a[0]+b[0])/2} ${(a[1]+b[1])/2-lift} ${b[0]} ${b[1]}`}
+function place(path,el,t){const L=path.getTotalLength(),p=path.getPointAtLength(L*t),q=path.getPointAtLength(Math.min(L,L*t+1)),r=path.getPointAtLength(Math.max(0,L*t-1));
+ el.setAttribute("transform",`translate(${p.x} ${p.y}) rotate(${Math.atan2(q.y-r.y,q.x-r.x)*180/Math.PI})`)}
+function trail(path,el,t){const L=path.getTotalLength();let d="";for(let i=0;i<=40;i++){const p=path.getPointAtLength(L*t*i/40);d+=(i?"L":"M")+p.x+" "+p.y}el.setAttribute("d",d)}
+/* A world map with a plane. run(A,B,t,loop): plane flies from A toward B up to fraction t. */
+function mkMap(svg){
+ svg.setAttribute("viewBox","0 10 720 290");
+ svg.innerHTML=`<g stroke="var(--line)" stroke-width="1">${GR}</g><path d="${LAND}" fill="var(--land)" stroke="var(--mute)" stroke-width=".8" stroke-linejoin="round"/><g class="pts"></g><path class="dash"/><path class="done-line"/><g><use href="#planeShape"/></g>`;
+ const [route,done]=svg.querySelectorAll("path.dash,path.done-line"),pl=svg.lastElementChild,pts=svg.querySelector(".pts");let raf;
+ return{run(A,B,t,loop){cancelAnimationFrame(raf);
+  const a=proj(A),b=proj(B);route.setAttribute("d",arc(a,b));
+  pts.innerHTML=[[A,a],[B,b]].map(([c,p])=>`<circle class="ink" cx="${p[0]}" cy="${p[1]}" r="4.5"/><text x="${p[0]}" y="${p[1]+(p[1]>250?-9:16)}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)" stroke="var(--land)" stroke-width="3" paint-order="stroke">${esc(c.n)}</text>`).join("");
+  if(reduce){place(route,pl,t);trail(route,done,t);return}
+  let s=null;
+  const f=ts=>{s=s||ts;
+   if(loop){const c=(ts-s)%5600,u=Math.min(1,c/4400),e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;place(route,pl,e);trail(route,done,e);pl.style.opacity=c>4400?Math.max(0,1-(c-4400)/300):1;raf=requestAnimationFrame(f);return}
+   const u=Math.min(1,(ts-s)/2800),e=1-Math.pow(1-u,3);place(route,pl,t*e);trail(route,done,t*e);
+   if(u<1)raf=requestAnimationFrame(f);else if(t<1)raf=requestAnimationFrame(function bob(x){place(route,pl,t+Math.sin(x/900)*.008);raf=requestAnimationFrame(bob)})};
+  raf=requestAnimationFrame(f)}}}
+const mapT=mkMap($("map")),mapB=mkMap($("bmap"));
+(function(){const p=$("heroPath"),pl=$("heroPlane"),tr=$("heroDone");
+ if(reduce){place(p,pl,.5);trail(p,tr,.5);return}
+ let s=null;const dur=9000;
+ (function f(ts){s=s||ts;const t=((ts-s)%(dur+1500))/dur,u=Math.min(1,t),e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
+  place(p,pl,e);trail(p,tr,e);pl.style.opacity=t>1?Math.max(0,1-(t-1)*4):1;requestAnimationFrame(f)})(performance.now())})();
+
+/* Tracking */
+const STEPS=["Awaiting payment","Payment confirmed","Picked up","In transit","Out for delivery","Delivered"],PR=[0,.02,.08,.5,.9,1];
+async function show(code){
+ const o=await getOrder(code);
+ if(!o){$("msg").textContent="We can't find that number. Check it and try again. Orders placed on another device may not show here.";return}
+ $("msg").textContent="";
+ const A=cty(o.from),B=cty(o.to),fin=o.step===5;
+ mapT.run(A,B,PR[o.step],false);
+ $("tRoute").textContent=`${o.from} to ${o.to}`;
+ $("tEta").textContent=`${MODE[o.mode]} · ${fin?"Delivered":"about "+days(A,B,o.mode)+" days door to door"} · ${fmt(o.total,o.cur)}`;
+ $("tPill").textContent=STEPS[o.step];$("tPill").className="pill"+(fin?" done":"");
+ $("steps").innerHTML=STEPS.map((s,i)=>`<li class="${i<=o.step?"on":""} ${i===o.step&&!fin?"now":""}"><i></i>${s}</li>`).join("")}
+$("go").onclick=()=>show($("code").value);
+$("code").addEventListener("keydown",e=>{if(e.key==="Enter")show(e.target.value)});
+
+/* Booking */
+const opts=CO.map(c=>`<option>${esc(c.n)}</option>`).join("");
+$("from").innerHTML=opts;$("to").innerHTML=opts;$("from").value="United States";$("to").value="United Kingdom";
+function est(){const A=cty($("from").value),B=cty($("to").value),kg=Math.max(.1,+$("kg").value||1),m=$("speed").value,q=quote(A,B,m,kg);
+ $("est").textContent=fmt(q.local,A.cur);
+ $("estUsd").textContent=A.cur==="USD"?"":`About ${fmt(q.usd,"USD")}. Priced in ${A.cur} because you ship from ${A.n}.`;
+ $("estEta").textContent=`Delivery in about ${days(A,B,m)} days`;
+ mapB.run(A,B,1,true)}
+["from","to","speed","kg"].forEach(i=>$(i).addEventListener("input",est));est();
+$("form").addEventListener("submit",async e=>{e.preventDefault();
+ const err=$("err");err.hidden=false;
+ const miss=["name","email","phone","addr","rname","raddr"].find(i=>!$(i).value.trim());
+ if(miss){err.textContent="Please fill in every field. The first empty one is highlighted.";$(miss).focus();return}
+ if($("from").value===$("to").value&&$("speed").value!=="e"){err.textContent="For deliveries inside one country, choose Economy flight.";return}
+ err.hidden=true;
+ const A=cty($("from").value),B=cty($("to").value),q=quote(A,B,$("speed").value,Math.max(.1,+$("kg").value||1));
+ const o={code:"LX-"+Math.floor(100000+Math.random()*899999),from:A.n,to:B.n,mode:$("speed").value,kg:+$("kg").value,cur:A.cur,total:q.local,usd:+q.usd.toFixed(2),step:0,pay:"unpaid",created:Date.now()};
+ const p={code:o.code,name:$("name").value.trim(),email:$("email").value.trim(),phone:$("phone").value.trim(),addr:$("addr").value.trim(),rname:$("rname").value.trim(),raddr:$("raddr").value.trim()};
+ const shared=await putOrder(o,p);
+ $("code").value=o.code;show(o.code);await checkout(o,shared);setTimeout(()=>$("checkout").scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"}),50)});
+
+async function checkout(o,shared){
+ const box=$("checkout"),pms=await getPM();box.hidden=false;
+ box.innerHTML=`<h3>Order ${o.code}</h3><p>Total to pay: <b>${fmt(o.total,o.cur)}</b>. Save your tracking number: <b>${o.code}</b>.</p>
+ ${shared?"":`<div class="note warn">Live sync is off, so this order is saved in this browser only. Ask the shop to enable online orders.</div>`}
+ <div class="pay" role="radiogroup" aria-label="Payment method">${pms.map((m,i)=>`<label class="opt"><input type="radio" name="pm" value="${i}" ${i?"":"checked"}><span><b>${esc(m.label)}</b><br><span class="mute">${m.type==="paypal"?"Pay by PayPal":"Pay in "+esc(m.label)+" on "+esc(m.network||"its network")}</span></span></label>`).join("")}</div>
+ <div id="pmDetail"></div>
+ <div class="form" style="margin-top:12px"><div><label for="ref">Payment reference or transaction ID</label><input id="ref" placeholder="Paste after you pay"></div><button class="btn" id="paid" type="button">I have paid</button></div><div id="pdone"></div>`;
+ const draw=()=>{const m=pms[+box.querySelector("[name=pm]:checked").value],d=$("pmDetail");
+  if(m.type==="paypal"){const amt=rnd(o.total,o.cur);
+   d.innerHTML=m.handle?`<a class="btn" target="_blank" rel="noopener" href="https://www.paypal.me/${encodeURIComponent(m.handle)}/${amt}${o.cur}">Open PayPal for ${fmt(o.total,o.cur)}</a>`:`<div class="note warn">PayPal is not set up yet. Place the order and we will email you an invoice.</div>`}
+  else{const coin=(o.usd/(m.rate||1));d.innerHTML=m.address?`<div class="note">Send exactly <b>${coin.toFixed(m.rate>1000?6:2)} ${esc(m.label)}</b> on <b>${esc(m.network)}</b> to:<div class="addr">${esc(m.address)}</div>Sending on a different network loses the funds.</div>`:`<div class="note warn">This coin is not set up yet. Choose another method or contact us.</div>`}};
+ box.querySelectorAll("[name=pm]").forEach(r=>r.onchange=draw);draw();
+ $("paid").onclick=async()=>{const ref=$("ref").value.trim();if(!ref){$("ref").focus();$("pdone").innerHTML=`<div class="note warn">Enter your payment reference first.</div>`;return}
+  o.pay="submitted";const m=pms[+box.querySelector("[name=pm]:checked").value];
+  const all=LS.get("lx_priv")||{};if(all[o.code]){all[o.code].ref=ref;all[o.code].method=m.label;LS.set("lx_priv",all)}
+  if(sb){await sb.rpc("submit_payment",{p_code:o.code,p_ref:ref,p_method:m.label})}else await putOrder(o,all[o.code]);
+  $("pdone").innerHTML=`<div class="note">Thanks. Now send us your order details on WhatsApp so we can confirm your payment fast.${WHATSAPP_NUMBER?`<br><br><a class="btn" target="_blank" rel="noopener" href="${esc(waLink(o,ref,m.label))}">Send details on WhatsApp</a>`:""}</div>`}}
+
+/* Admin */
+/* After you create your admin login, paste the code it shows you between the quotes below. Then the login works the same in every browser. */
+const ADMIN_HASH="5f8bdeff8f3e20304fc36c07ebd20614796776a82997e4108c3b02dd59219c88";
+let unsubs=[],authed=false;
+const sha=async t=>{try{if(crypto.subtle)return [...new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)))].map(x=>x.toString(16).padStart(2,"0")).join("")}catch{}let h=5381;for(const c of t)h=((h<<5)+h+c.charCodeAt(0))>>>0;return "f"+h};
+async function getAuth(){if(db){try{const s=await db.doc("settings/admin").get();if(s.exists)return s.data().h}catch{}}return LS.get("lx_auth")}
+async function sbAdmin(){const gate=$("gate"),panel=$("panel");
+ const{data}=await sb.auth.getSession();
+ if(data.session){authed=true;gate.hidden=true;panel.hidden=false;$("logout").hidden=false;return adminPanel()}
+ authed=false;panel.hidden=true;gate.hidden=false;$("logout").hidden=true;
+ gate.innerHTML=`<h3>Admin login</h3><form class="form" id="lf" style="max-width:360px"><div><label for="au">Email</label><input id="au" type="email" autocomplete="username"></div><div><label for="ap">Password</label><input id="ap" type="password" autocomplete="current-password"></div><button class="btn" type="submit">Log in</button><div id="lm" class="mute" role="status"></div></form>`;
+ $("lf").onsubmit=async e=>{e.preventDefault();const r=await sb.auth.signInWithPassword({email:$("au").value.trim(),password:$("ap").value});if(r.error)$("lm").textContent="Wrong email or password.";else sbAdmin()}}
+async function adminInit(){
+ if(sb)return sbAdmin();
+ const gate=$("gate"),panel=$("panel");
+ $("logout").hidden=!authed;
+ if(authed){gate.hidden=true;panel.hidden=false;$("logout").hidden=false;return adminPanel()}
+ panel.hidden=true;gate.hidden=false;
+ const h=ADMIN_HASH||await getAuth();let owner=false;try{owner=usr?await usr.isOwner():false}catch{}
+ const first=!h;
+ if(first&&!owner&&db){gate.innerHTML=`<h3>Admin login</h3><p>The admin login has not been created yet. The website owner must open this page while signed in to Claude to create it.</p>`;return}
+ gate.innerHTML=`<h3>${first?"Create your admin login":"Admin login"}</h3><p class="mute" style="font-size:.9rem">${db?"":"This site is running on its own, so the login is saved in this browser only."}</p><form class="form" id="lf" style="max-width:360px"><div><label for="au">Username</label><input id="au" autocomplete="username"></div><div><label for="ap">Password</label><input id="ap" type="password" autocomplete="${first?"new-password":"current-password"}"></div><button class="btn" type="submit">${first?"Create login":"Log in"}</button><div id="lm" class="mute" role="status"></div></form>`;
+ $("lf").onsubmit=async e=>{e.preventDefault();const u=$("au").value.trim().toLowerCase(),p=$("ap").value;
+  if(!u||p.length<8){$("lm").textContent="Enter a username and a password of at least 8 characters.";return}
+  const x=await sha("lx:"+u+":"+p);
+  if(first){LS.set("lx_auth",x);if(db){try{await db.doc("settings/admin").set({h:x})}catch{}}authed=true;gate.innerHTML=`<h3>Login created</h3><p>To make this login work in every browser, open index.html, find <b>ADMIN_HASH</b>, and paste this between the quotes, then upload the file again:</p><div class="addr">${x}</div><button class="btn" id="cont" type="button">Continue to admin</button>`;$("cont").onclick=adminInit}
+  else if(x===h){authed=true;adminInit()}else $("lm").textContent="Wrong username or password."}}
+async function adminPanel(){
+ $("logout").onclick=()=>{if(sb)sb.auth.signOut();clearInterval(window._poll);authed=false;unsubs.forEach(u=>u());adminInit()};
+ let orders={},priv={};
+ const draw=()=>{const rows=Object.values(orders).sort((a,b)=>b.created-a.created);
+  $("orders").innerHTML=rows.length?rows.map(o=>{const p=priv[o.code]||{};return `<tr><td><b>${esc(o.code)}</b></td><td>${esc(p.name||"-")}<br><span class="mute">${esc(p.phone||"")}</span></td><td>${esc(o.from)} to ${esc(o.to)}</td><td>${esc(fmt(o.total,o.cur))}</td><td>${esc(o.pay||"unpaid")}${p.ref?`<br><span class="mute">${esc(p.method||"")}: ${esc(p.ref)}</span>`:""}${o.pay!=="paid"?` <button class="btn sm" data-paid="${esc(o.code)}">Confirm</button>`:""}</td><td><select data-step="${esc(o.code)}" aria-label="Status for ${esc(o.code)}">${STEPS.map((s,i)=>`<option value="${i}" ${i===o.step?"selected":""}>${s}</option>`).join("")}</select></td></tr>`}).join(""):`<tr><td colspan="6" class="mute">No orders yet. New orders appear here.</td></tr>`;
+  $("orders").querySelectorAll("[data-paid]").forEach(b=>b.onclick=()=>upd(b.dataset.paid,{pay:"paid",step:Math.max(1,orders[b.dataset.paid].step)}));
+  $("orders").querySelectorAll("[data-step]").forEach(s=>s.onchange=()=>upd(s.dataset.step,{step:+s.value}))};
+ async function upd(code,ch){Object.assign(orders[code],ch);const all=LS.get("lx_orders")||{};all[code]=orders[code];LS.set("lx_orders",all);
+  if(sb){await sb.from("orders").update({data:orders[code]}).eq("code",code)}else if(db){try{await db.doc("orders/"+code).update(ch)}catch{}}draw()}
+ unsubs.forEach(u=>u());unsubs=[];
+ if(sb){$("dbnote").textContent="Live orders from your database.";const ld=async()=>{const a=await sb.from("orders").select("data"),b=await sb.from("private_orders").select("code,data");orders={};(a.data||[]).forEach(r=>orders[r.data.code]=r.data);priv={};(b.data||[]).forEach(r=>priv[r.code]=r.data);draw()};await ld();clearInterval(window._poll);window._poll=setInterval(ld,8000)}
+ else if(db){$("dbnote").textContent="Live orders from all customers.";
+  unsubs=[db.collection("orders").onSnapshot(s=>{orders={};s.docs.forEach(d=>orders[d.id]=d.data());draw()}),
+   db.collection("private").onSnapshot(s=>{priv={};s.docs.forEach(d=>priv[d.id]=d.data());draw()})]}
+ else{$("dbnote").textContent="Live database is off. Showing orders saved in this browser.";orders=LS.get("lx_orders")||{};priv=LS.get("lx_priv")||{};draw()}
+ /* route prices */
+ let rt=JSON.parse(JSON.stringify(ROUTES));
+ const drawRt=()=>{$("rts").innerHTML=rt.map((r,i)=>`<div class="f2" style="grid-template-columns:1fr 1fr 120px auto;margin-top:8px;align-items:end"><div><label>From<select data-r="${i}" data-k="from">${opts}</select></label></div><div><label>To<select data-r="${i}" data-k="to">${opts}</select></label></div><div><label>Price<input type="number" min="0" data-r="${i}" data-k="price" value="${r.price}"></label></div><button class="btn alt sm" data-rr="${i}" type="button">Remove</button></div>`).join("");
+  $("rts").querySelectorAll("[data-r]").forEach(x=>{const r=rt[+x.dataset.r],k=x.dataset.k;if(k!=="price")x.value=r[k];x.oninput=()=>{r[k]=k==="price"?+x.value:x.value}});
+  $("rts").querySelectorAll("[data-rr]").forEach(b=>b.onclick=()=>{rt.splice(+b.dataset.rr,1);drawRt()})};
+ drawRt();
+ $("addRt").onclick=()=>{rt.push({from:"United States",to:"United Kingdom",price:500});drawRt()};
+ $("saveRt").onclick=async()=>{ROUTES=rt.filter(r=>r.price>0);LS.set("lx_routes",ROUTES);let ok=false;if(sb){const r=await sb.from("settings").upsert({key:"routes",data:{routes:ROUTES}});ok=!r.error}else if(db){try{await db.doc("settings/routes").set({routes:ROUTES});ok=true}catch{}}est();
+  $("rtMsg").textContent=ok?"Saved. New prices apply to customers now.":"Saved in this browser only, because the live database is off."};
+ /* payment methods */
+ let pm=JSON.parse(JSON.stringify(await getPM()));
+ const fields=m=>m.type==="paypal"?[["label","Name shown"],["handle","PayPal.me name"]]:[["label","Coin (e.g. USDT, BTC)"],["network","Network (e.g. TRC20, Bitcoin)"],["address","Wallet address"],["rate","Price of 1 coin in USD"]];
+ const drawPM=()=>{$("pms").innerHTML=pm.map((m,i)=>`<div class="pm"><b>${m.type==="paypal"?"PayPal":"Crypto"}</b>${fields(m).map(([k,l])=>`<div><label>${l}<input data-i="${i}" data-k="${k}" value="${esc(m[k])}"></label></div>`).join("")}<button class="btn alt sm" data-rm="${i}" type="button" style="justify-self:start">Remove</button></div>`).join("");
+  $("pms").querySelectorAll("input").forEach(x=>x.oninput=()=>{pm[+x.dataset.i][x.dataset.k]=x.dataset.k==="rate"?+x.value:x.value});
+  $("pms").querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>{pm.splice(+b.dataset.rm,1);drawPM()})};
+ drawPM();
+ $("addPP").onclick=()=>{pm.push({id:"pp"+Date.now(),type:"paypal",label:"PayPal",handle:""});drawPM()};
+ $("addCr").onclick=()=>{pm.push({id:"c"+Date.now(),type:"crypto",label:"",network:"",address:"",rate:1});drawPM()};
+ $("savePM").onclick=async()=>{LS.set("lx_pm",pm);let ok=false;if(sb){const r=await sb.from("settings").upsert({key:"payments",data:{methods:pm}});ok=!r.error}else if(db){try{await db.doc("settings/payments").set({methods:pm});ok=true}catch{}}
+  $("pmMsg").textContent=ok?"Saved. Customers see the new methods now.":"Saved in this browser only, because the live database is off."}}
+
+function route(){const a=location.hash==="#admin";$("site").hidden=a;$("admin").hidden=!a;if(a){window.scrollTo(0,0);adminInit()}}
+addEventListener("hashchange",route);
+show("LX-104820");
+(async()=>{try{if(window.claude){db=await claude.use("db");usr=await claude.use("user")}}catch{}
+ const lr=LS.get("lx_routes");if(lr)ROUTES=lr;
+ if(sb){try{const r=await sb.from("settings").select("data").eq("key","routes").maybeSingle();if(r.data&&r.data.data.routes)ROUTES=r.data.data.routes}catch{}}
+ if(db){try{const r=await db.doc("settings/routes").get();if(r.exists&&r.data().routes)ROUTES=r.data().routes}catch{}}
+ est();route()})();
+</script>
 </body>
 </html>
